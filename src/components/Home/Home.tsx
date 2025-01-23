@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import PokeCard from "./PokeCard";
 
 interface PokeObj {
   name: string;
@@ -36,12 +37,21 @@ const Home = () => {
   return (
     <div>
       {pokemonData.length ? (
-        <div>
-          <ul>
-            {pokemonData.map((pokemon, index) => (
-              <li key={index}>{formatName(pokemon.name)}</li>
-            ))}
-          </ul>
+        <div
+          style={{
+            display: "grid",
+            gap: "2rem",
+            gridTemplateColumns: "auto auto auto auto",
+          }}
+        >
+          {pokemonData.map((pokemon, i) => (
+            <PokeCard
+              key={`pokemon-${i}`}
+              name={pokemon.name}
+              url={pokemon.url}
+              formatName={formatName}
+            />
+          ))}
         </div>
       ) : null}
     </div>
