@@ -9,13 +9,13 @@ interface PokeObj {
 
 const Home = () => {
   const [pokemonData, setPokemonData] = useState<PokeObj[]>([]);
+  const [showCards, setShowCards] = useState<boolean>(false);
 
   useEffect(() => {
     const getPokemon = async () => {
       try {
         const { data } = await axios.get("https://pokeapi.co/api/v2/pokemon");
         setPokemonData(data.results);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching Pokemon data:", error);
       }
@@ -31,26 +31,25 @@ const Home = () => {
   useEffect(() => {
     if (pokemonData) {
       console.log(pokemonData);
+      setShowCards(true);
     }
   }, [pokemonData]);
 
   return (
     <div>
-      {pokemonData.length ? (
+      {pokemonData.length && showCards ? (
         <div
-          style={{
-            display: "grid",
-            gap: "2rem",
-            gridTemplateColumns: "auto auto auto auto",
-          }}
+          className="grid grid-cols-5 auto-rows-[minmax(170px,auto)] gap-5"
         >
           {pokemonData.map((pokemon, i) => (
-            <PokeCard
-              key={`pokemon-${i}`}
-              name={pokemon.name}
-              url={pokemon.url}
-              formatName={formatName}
-            />
+            <div key={`pokemon-${i + 1}`} className="m-2 text-center">
+              <PokeCard
+                id={i + 1}
+                name={pokemon.name}
+                url={pokemon.url}
+                formatName={formatName}
+              />
+            </div>
           ))}
         </div>
       ) : null}
