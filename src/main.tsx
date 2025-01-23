@@ -8,6 +8,7 @@ import { store } from "./store/index.ts";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Team from "./components/Team.tsx";
 import Home from "./components/Home/Home.tsx";
+import PokemonDetail from "./components/PokemonDetail.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path='/' element={<App />}>
             <Route index  element={<Home />} />
             <Route path='team' element={<Team />} />
+            <Route path="card/:name" element={<PokemonDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>

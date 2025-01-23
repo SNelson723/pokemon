@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router";
+import { formatName } from "../../helpers";
 
 interface PokeCardProps {
   name: string;
   url: string;
-  formatName: (name: string) => string;
   id: number;
 }
 
-const PokeCard = ({ name, url, formatName, id }: PokeCardProps) => {
-  // const [pokeInfo, setPokeInfo] = useState<T[]>([]);
+const PokeCard = ({ name, url, id }: PokeCardProps) => {
   const [img, setImg] = useState<string>('');
   const cardRef = useRef(null);
 

@@ -24,10 +24,6 @@ const Home = () => {
     getPokemon();
   }, []);
 
-  const formatName = (name: string): string => {
-    return name.substring(0, 1).toUpperCase() + name.substring(1);
-  };
-
   useEffect(() => {
     if (pokemonData) {
       console.log(pokemonData);
@@ -47,7 +43,6 @@ const Home = () => {
                 id={i + 1}
                 name={pokemon.name}
                 url={pokemon.url}
-                formatName={formatName}
               />
             </div>
           ))}
