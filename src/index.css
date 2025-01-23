@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities
+@tailwind utilities;
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  width: 100vw
+}
+
+@layer base {
+  :root {
+    --color-grassType: 5 255 150;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    width: 2em;
+  }
+}
