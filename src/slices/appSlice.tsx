@@ -14,3 +14,6 @@ export const appSlice = createSlice({
   initialState,
   reducers: {}
 });
+
+// Action creators are generated for each case reducer function
+export default appSlice.reducer;
